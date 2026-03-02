@@ -1,8 +1,12 @@
 <%@ page import="java.time.*" %>
 <%
-  int hour = LocalTime.now().getHour();
+  String t = request.getParameter("t");
   String name = "Jerome";
-  String greet = (hour < 12) ? "Good morning" : "Good afternoon";
+  String greet;
+
+  if ("morning".equalsIgnoreCase(t)) greet = "Good morning";
+  else if ("afternoon".equalsIgnoreCase(t)) greet = "Good afternoon";
+  else greet = (LocalTime.now().getHour() < 12) ? "Good morning" : "Good afternoon";
 %>
 <html><body>
 <h1><%= greet %>, <%= name %>, Welcome to COMP367</h1>
